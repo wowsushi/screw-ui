@@ -13,7 +13,7 @@ export const DEFAULT_THEME: ScrewTheme = {
   colors: DEFAULT_COLORS,
   lineHeight: 1.55,
   fontFamily:
-    "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji",
+    "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Microsoft YaHei",
   fontFamilyMonospace:
     "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
   primaryColor: "blue",
@@ -58,17 +58,70 @@ export const DEFAULT_THEME: ScrewTheme = {
     xl: 1400,
   },
 
-  headings: {
+  typography: {
     fontFamily:
       "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji",
-    fontWeight: 700,
     sizes: {
-      h1: { fontSize: 34, lineHeight: 1.3 },
-      h2: { fontSize: 26, lineHeight: 1.35 },
-      h3: { fontSize: 22, lineHeight: 1.4 },
-      h4: { fontSize: 18, lineHeight: 1.45 },
-      h5: { fontSize: 16, lineHeight: 1.5 },
-      h6: { fontSize: 14, lineHeight: 1.5 },
+      h1: {
+        fontSize: "3rem",
+        fontWeight: "700",
+        lineHeight: "1.5",
+        letterSpacing: "0.1em",
+      },
+      h2: {
+        fontSize: "2.25rem",
+        fontWeight: "600",
+        lineHeight: "1.5",
+        letterSpacing: "0.1em",
+      },
+      h3: {
+        fontSize: "1.875rem",
+        fontWeight: "500",
+        lineHeight: "1.5",
+        letterSpacing: "0.05em",
+      },
+      h4: {
+        fontSize: "1.75rem",
+        fontWeight: "500",
+        lineHeight: "1.5",
+        letterSpacing: "0.05em",
+      },
+      h5: {
+        fontSize: "1.5rem",
+        fontWeight: "500",
+        lineHeight: "1.5",
+        letterSpacing: "0.025em",
+      },
+      h6: {
+        fontSize: "1.375rem",
+        fontWeight: "500",
+        lineHeight: "1.5",
+        letterSpacing: "0.025em",
+      },
+      body1: {
+        fontSize: "1rem",
+        fontWeight: "400",
+        lineHeight: "1.5rem",
+        letterSpacing: 0,
+      },
+      body2: {
+        fontSize: "0.875rem",
+        fontWeight: "400",
+        lineHeight: "1.25rem",
+        letterSpacing: 0,
+      },
+      button1: {
+        fontSize: "0.875rem",
+        fontWeight: "500",
+        lineHeight: "2.5rem",
+        letterSpacing: "0.025em",
+      },
+      button2: {
+        fontSize: "0.875rem",
+        fontWeight: "500",
+        lineHeight: "2rem",
+        letterSpacing: "0.025em",
+      },
     },
   },
 

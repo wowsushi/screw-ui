@@ -2,9 +2,11 @@ import { CSSProperties } from "react";
 
 type ScrewSize = "xs" | "sm" | "md" | "lg" | "xl";
 export type ScrewSizes = Record<ScrewSize, number>;
-export interface HeadingStyle {
+export interface TypographyStyle {
   fontSize: CSSProperties["fontSize"];
   lineHeight: CSSProperties["lineHeight"];
+  fontWeight: CSSProperties["fontWeight"];
+  letterSpacing: CSSProperties["letterSpacing"];
 }
 
 export interface ScrewTheme {
@@ -12,7 +14,7 @@ export interface ScrewTheme {
   colorScheme: "light" | "dark";
   white: string;
   black: string;
-  colors: Record<string, any>;
+  colors: Record<string, string[]>;
   fontFamily: CSSProperties["fontFamily"];
   lineHeight: CSSProperties["lineHeight"];
   transitionTimingFunction: CSSProperties["transitionTimingFunction"];
@@ -25,17 +27,9 @@ export interface ScrewTheme {
   breakpoints: ScrewSizes;
   shadows: Record<ScrewSize, string>;
 
-  headings: {
+  typography: {
     fontFamily: CSSProperties["fontFamily"];
-    fontWeight: CSSProperties["fontWeight"];
-    sizes: {
-      h1: HeadingStyle;
-      h2: HeadingStyle;
-      h3: HeadingStyle;
-      h4: HeadingStyle;
-      h5: HeadingStyle;
-      h6: HeadingStyle;
-    };
+    sizes: Record<string, TypographyStyle>;
   };
 
   other: Record<string, unknown>;
