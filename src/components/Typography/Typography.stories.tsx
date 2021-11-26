@@ -34,12 +34,12 @@ const Template: ComponentStory<typeof Typography> = (args) => {
     </Typography>
   ));
   content.push(
-    <Typography variant="body1" {...args}>
+    <Typography key="body1" variant="body1" {...args}>
       {LONG_STRING}
     </Typography>
   );
   content.push(
-    <Typography variant="body2" {...args}>
+    <Typography key="body2" variant="body2" {...args}>
       {LONG_STRING}
     </Typography>
   );

@@ -1,6 +1,8 @@
 import { FC } from "react";
 import styled from "styled-components";
 
+import { createStyle } from "./Typography.styles";
+
 export type TypographyVariantType =
   | `h${1 | 2 | 3 | 4 | 5 | 6}`
   | `button${1 | 2}`
@@ -34,31 +36,17 @@ export interface TypographyProps {
 /**
  * Applied to display title or paragraph contents with no margin.
  */
-const Typography: FC<TypographyProps> = ({
+const _Typography: FC<TypographyProps> = ({
   children,
   variant = "body2",
   lineClamp,
   ...props
 }) => {
-  const Component = getComponentFromVariant(variant);
-  const StyledTypography = styled(Component)`
-    ${({ theme }) => theme.typography.sizes[variant]}
-    font-family: ${({ theme }) => theme.typography.fontFamily};
-    margin: 0;
+  const Element = getComponentFromVariant(variant);
 
-    ${() => {
-      if (typeof lineClamp === "number")
-        return {
-          display: "-webkit-box",
-          "-webkitLineClamp": `${lineClamp}`,
-          "-webkitBoxOrient": "vertical",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-        };
-    }}
-  `;
-
-  return <StyledTypography {...props}>{children}</StyledTypography>;
+  return <Element {...props}>{children}</Element>;
 };
 
-export default Typography;
+export default styled(_Typography)`
+  ${createStyle}
+`;
