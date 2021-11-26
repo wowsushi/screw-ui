@@ -2,6 +2,22 @@ import { DEFAULT_COLORS } from "./default-colors";
 import { ScrewTheme } from "./types/ScrewTheme";
 
 export const SCREW_COLORS = Object.keys(DEFAULT_COLORS);
+
+export const SCREW_COLOR_MAPPING = {
+  primary: "cyan",
+  secondary: "blue",
+  warning: "red",
+  success: "green",
+  gray: "gray",
+};
+
+export type SCREW_COLOR_TYPE =
+  | "primary"
+  | "secondary"
+  | "warning"
+  | "success"
+  | "gray";
+
 export const SCREW_SIZES = ["xs", "sm", "md", "lg", "xl"] as const;
 
 export const DEFAULT_THEME: ScrewTheme = {
