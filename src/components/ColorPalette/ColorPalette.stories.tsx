@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { DEFAULT_COLORS } from "@/theme/default-colors";
 
 export default {
-  title: "Example/ColorPalette",
+  title: "Theme/ColorPalette",
 } as Meta;
 
 const StyledColorPalettes = styled.div`
@@ -47,6 +47,6 @@ const Template: Story = () => {
   return <>{ColorPalettes}</>;
 };
 
-export const ShowRoom = Template.bind({});
+export const Playground = Template.bind({});
 
-ShowRoom.args = {};
+Playground.args = {};

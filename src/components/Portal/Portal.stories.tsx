@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Portal from "./Portal";
 
 export default {
-  title: "Example/Portal",
+  title: "Utils/Portal",
   component: Portal,
 } as ComponentMeta<typeof Portal>;
 

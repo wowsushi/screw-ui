@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 export default {
-  title: "Example/Typography",
+  title: "Data display/Typography",
   component: Typography,
 } as ComponentMeta<typeof Typography>;
 
@@ -46,8 +46,8 @@ const Template: ComponentStory<typeof Typography> = (args) => {
   return <Wrapper>{content}</Wrapper>;
 };
 
-export const ShowRoom = Template.bind({});
-ShowRoom.args = {};
+export const Playground = Template.bind({});
+Playground.args = {};
 
 export const Ellipsis: ComponentStory<typeof Typography> = (args) => {
   return (

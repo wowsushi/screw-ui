@@ -12,7 +12,7 @@ import { SCREW_COLOR_TYPE } from "@/theme/default-theme";
 import Button, { ButtonSizeType } from "./Button";
 
 export default {
-  title: "Example/Button",
+  title: "Inputs/Button",
   component: Button,
 } as ComponentMeta<typeof Button>;
 
@@ -60,11 +60,11 @@ const Template: ComponentStory<typeof Button> = (args) => {
   return <Button {...args} />;
 };
 
-export const ShowRoom = Template.bind({});
-ShowRoom.args = {
+export const Playground = Template.bind({});
+Playground.args = {
   children: "測試按鈕",
 };
-ShowRoom.argTypes = {
+Playground.argTypes = {
   component: {
     type: {
       name: "string",
