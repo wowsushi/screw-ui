@@ -1,19 +1,18 @@
-import { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react";
 
-import {
-  SCREW_COLOR_MAPPING,
-  SCREW_COLOR_TYPE,
-} from "../../theme/default-theme";
-import { createStyle } from "./Button.style";
-type ButtonVariantType = "contained" | "outlined" | "text";
-type ButtonSizeType = "small" | "medium" | "large";
+import { SCREW_COLOR_TYPE } from "@/theme/default-theme";
+
+import Loader from "../Loader";
+import Typography from "../Typography";
+import StyledComponent, { StyledPrefix, StyledSuffix } from "./Button.styles";
+export type ButtonVariantType = "contained" | "outlined" | "text";
+export type ButtonSizeType = "sm" | "md" | "lg";
 
 export interface ButtonProps {
   /**
    * Root element type
    */
-  Component?: React.ElementType;
+  component?: React.ElementType;
   /**
    * The variant to use.
    */
@@ -44,36 +43,55 @@ export interface ButtonProps {
   color?: SCREW_COLOR_TYPE;
 }
 
-const getStyledElement = (elementType) => styled[elementType]`
-  ${createStyle}
-`;
 /**
- * Applied to display title or paragraph contents with no margin.
+ * Button allow users to take actions by single tap component.
  */
 const Button: FC<ButtonProps> = ({
   children,
-  Component,
-  // variant = "contained",
+  component,
+  variant = "contained",
   disabled = false,
   loading = false,
   prefix,
   suffix,
-  size = "medium",
+  size = "md",
   color = "primary",
   ...props
 }) => {
-  const Element = Component || "button";
-  // const StyledButton = styled(Element)`
-  //   ${createStyle}
-  // `;
-  const StyledButton = getStyledElement(Component || "button");
+  let loaderPosition = "left";
+  if (suffix && !prefix) loaderPosition = "right";
   return (
-    <StyledButton $color={color} {...props}>
-      {children}
-    </StyledButton>
+    <StyledComponent
+      as={component || "button"}
+      disabled={disabled || loading}
+      $loading={loading}
+      $size={size}
+      $variant={variant}
+      $color={color}
+      {...props}
+    >
+      {(prefix || (loading && loaderPosition === "left")) && (
+        <StyledPrefix>
+          {loading && loaderPosition === "left" ? (
+            <Loader color="dark" size={size} />
+          ) : (
+            prefix
+          )}
+        </StyledPrefix>
+      )}
+
+      <Typography variant="button2">{children}</Typography>
+
+      {(suffix || (loading && loaderPosition === "right")) && (
+        <StyledSuffix>
+          {loading && loaderPosition === "right" ? (
+            <Loader color="dark" size={size} />
+          ) : (
+            suffix
+          )}
+        </StyledSuffix>
+      )}
+    </StyledComponent>
   );
 };
 export default Button;
-// export default styled(Button)`
-//   ${createStyle}
-// `;
