@@ -1,4 +1,4 @@
-import styled, { CSSProperties } from "styled-components";
+import styled, { CSSObject, CSSProperties } from "styled-components";
 
 import { SCREW_COLOR_MAPPING } from "@/theme/default-theme";
 import { ScrewTheme, ToPrivateProperty } from "@/theme/types";
@@ -14,19 +14,19 @@ const getVariantStyle = ({
   theme,
   $color,
   $variant,
-}: GetVariantStyles): Record<string, CSSProperties> => {
+}: GetVariantStyles): Record<string, CSSObject> => {
   if ($variant === "outlined") {
     return {
       root: {
         backgroundColor: "transparent",
         color: `${theme.colors[SCREW_COLOR_MAPPING[$color]][8]}`,
         border: "1px solid currentcolor",
-      },
-      "root:hover": {
-        color: `${theme.colors[SCREW_COLOR_MAPPING[$color]][7]}`,
-      },
-      "root:disabled": {
-        color: theme.colors.gray[6],
+        "&:hover": {
+          color: `${theme.colors[SCREW_COLOR_MAPPING[$color]][7]}`,
+        },
+        "&:disabled": {
+          color: theme.colors.gray[6],
+        },
       },
     };
   }
@@ -37,12 +37,12 @@ const getVariantStyle = ({
         backgroundColor: "transparent",
         color: `${theme.colors[SCREW_COLOR_MAPPING[$color]][8]}`,
         border: "1px solid transparent",
-      },
-      "root:hover": {
-        color: `${theme.colors[SCREW_COLOR_MAPPING[$color]][7]}`,
-      },
-      "root:disabled": {
-        color: theme.colors.gray[6],
+        "&:hover": {
+          color: `${theme.colors[SCREW_COLOR_MAPPING[$color]][7]}`,
+        },
+        "&:disabled": {
+          color: theme.colors.gray[6],
+        },
       },
     };
   }
@@ -51,13 +51,13 @@ const getVariantStyle = ({
       backgroundColor: `${theme.colors[SCREW_COLOR_MAPPING[$color]][8]}`,
       color: theme.white,
       border: "1px solid transparent",
-    },
-    "root:hover": {
-      backgroundColor: `${theme.colors[SCREW_COLOR_MAPPING[$color]][7]}`,
-    },
-    "root:disabled": {
-      backgroundColor: theme.colors.gray[3],
-      color: theme.colors.gray[6],
+      "&:hover": {
+        backgroundColor: `${theme.colors[SCREW_COLOR_MAPPING[$color]][7]}`,
+      },
+      "&:disabled": {
+        backgroundColor: theme.colors.gray[3],
+        color: theme.colors.gray[6],
+      },
     },
   };
 };
@@ -112,23 +112,13 @@ export default styled.div<
       transition: "all .2s",
       ...getSizeStyle({ theme, $size }),
       ...getVariantStyle({ theme, $color, $variant }).root,
+
+      "&:disabled": {
+        cursor: "not-allowed",
+        ...(getVariantStyle({ theme, $color, $variant }).root[
+          "&:disabled"
+        ] as Record<string, unknown>),
+      },
     };
   }}
-
-  &:hover {
-    ${({ theme, $color, $variant }) => {
-      return {
-        ...getVariantStyle({ theme, $color, $variant })["root:hover"],
-      };
-    }}
-  }
-
-  &:disabled {
-    ${({ theme, $color, $variant }) => {
-      return {
-        cursor: "not-allowed",
-        ...getVariantStyle({ theme, $color, $variant })["root:disabled"],
-      };
-    }}
-  }
 `;
