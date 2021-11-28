@@ -24,7 +24,8 @@ export interface PortalProps {
  * Primary UI component for user interaction
  */
 const Portal: FC<PortalProps> = ({ children, container }) => {
-  const [mountNode, setMountNode] = useState(null);
+  const [mountNode, setMountNode] = useState(container || document.body);
+
   useEffect(() => {
     setMountNode(container || document.body);
   }, [container]);

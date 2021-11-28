@@ -9,6 +9,7 @@ export const SCREW_COLOR_MAPPING = {
   warning: "red",
   success: "green",
   gray: "gray",
+  dark: "dark",
 };
 
 export type SCREW_COLOR_TYPE =
@@ -16,9 +17,10 @@ export type SCREW_COLOR_TYPE =
   | "secondary"
   | "warning"
   | "success"
-  | "gray";
+  | "gray"
+  | "dark";
 
-export const SCREW_SIZES = ["xs", "sm", "md", "lg", "xl"] as const;
+export type SCREW_SIZES = "xs" | "sm" | "md" | "lg" | "xl";
 
 export const DEFAULT_THEME: ScrewTheme = {
   dateFormat: "MMMM D, YYYY",
@@ -129,13 +131,13 @@ export const DEFAULT_THEME: ScrewTheme = {
       button1: {
         fontSize: "0.875rem",
         fontWeight: "500",
-        lineHeight: "2.5rem",
+        lineHeight: 1.75,
         letterSpacing: "0.025em",
       },
       button2: {
         fontSize: "0.875rem",
         fontWeight: "500",
-        lineHeight: "2rem",
+        lineHeight: 1.75,
         letterSpacing: "0.025em",
       },
     },

@@ -1,7 +1,7 @@
 import { Meta, Story } from "@storybook/react";
 import styled from "styled-components";
 
-import { DEFAULT_COLORS } from "../../theme/default-colors";
+import { DEFAULT_COLORS } from "@/theme/default-colors";
 
 export default {
   title: "Example/ColorPalette",
@@ -13,7 +13,7 @@ const StyledColorPalettes = styled.div`
   min-width: 800px;
 `;
 
-const Box = styled.div<{ colorName: string; colorLevel: string }>`
+const Box = styled.div<{ colorName: string; colorLevel: number }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,10 +24,12 @@ const Box = styled.div<{ colorName: string; colorLevel: string }>`
 `;
 
 const Template: Story = () => {
-  const ColorPalettes = [];
+  const ColorPalettes: React.ReactNode[] = [];
 
   Object.keys(DEFAULT_COLORS).map((colorName) => {
-    const ColorPalette = DEFAULT_COLORS[colorName].map((_, index) => {
+    const ColorPalette = DEFAULT_COLORS[
+      colorName as keyof typeof DEFAULT_COLORS
+    ].map((_, index) => {
       return (
         <Box
           key={`${colorName}-${index}`}

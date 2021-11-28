@@ -4,9 +4,7 @@ import styled from "styled-components";
 const StyledDiv = styled.div`
   color: "white";
 `;
-const App: React.VFC = (props) => {
-  const find = [1, 2, 3];
-
+const App: React.FC = (props) => {
   return <StyledDiv>My app {props.children}</StyledDiv>;
 };
 
