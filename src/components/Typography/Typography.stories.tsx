@@ -1,7 +1,11 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { FC } from "react";
 import styled from "styled-components";
 
-import Typography, { TypographyVariantType } from "./Typography";
+import Typography, {
+  TypographyProps,
+  TypographyVariantType,
+} from "./Typography";
 
 const LONG_STRING =
   "body1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, asperiores fuga porro officiis mollitia qui, consectetur sed provident suscipit voluptate quae similique minima itaque officia non impedit perferendis quis consequatur?";
@@ -16,7 +20,7 @@ export default {
   component: Typography,
 } as ComponentMeta<typeof Typography>;
 
-const Template: ComponentStory<typeof Typography> = (args) => {
+export const ShowRoom: FC<TypographyProps> = () => {
   const variant: TypographyVariantType[] = [
     "h1",
     "h2",
@@ -29,25 +33,22 @@ const Template: ComponentStory<typeof Typography> = (args) => {
   ];
 
   const content = variant.map((typographyType) => (
-    <Typography key={typographyType} variant={typographyType} {...args}>
+    <Typography key={typographyType} variant={typographyType}>
       {typographyType} sample text
     </Typography>
   ));
   content.push(
-    <Typography key="body1" variant="body1" {...args}>
+    <Typography key="body1" variant="body1">
       {LONG_STRING}
     </Typography>
   );
   content.push(
-    <Typography key="body2" variant="body2" {...args}>
+    <Typography key="body2" variant="body2">
       {LONG_STRING}
     </Typography>
   );
   return <Wrapper>{content}</Wrapper>;
 };
-
-export const Playground = Template.bind({});
-Playground.args = {};
 
 export const Ellipsis: ComponentStory<typeof Typography> = (args) => {
   return (

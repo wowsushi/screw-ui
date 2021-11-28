@@ -1,7 +1,6 @@
 import { FC } from "react";
-import styled from "styled-components";
 
-import { createStyle } from "./Typography.styles";
+import { StyledRootElement } from "./Typography.styles";
 
 export type TypographyVariantType =
   | `h${1 | 2 | 3 | 4 | 5 | 6}`
@@ -36,17 +35,22 @@ export interface TypographyProps {
 /**
  * Applied to display title or paragraph contents with no margin.
  */
-const _Typography: FC<TypographyProps> = ({
+const Typography: FC<TypographyProps> = ({
   children,
   variant = "body2",
   lineClamp,
   ...props
 }) => {
-  const Element = getComponentFromVariant(variant);
-
-  return <Element {...props}>{children}</Element>;
+  return (
+    <StyledRootElement
+      as={getComponentFromVariant(variant)}
+      $lineClamp={lineClamp}
+      $variant={variant}
+      {...props}
+    >
+      {children}
+    </StyledRootElement>
+  );
 };
 
-export default styled(_Typography)`
-  ${createStyle}
-`;
+export default Typography;
