@@ -1,8 +1,13 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
 import { SCREW_COLOR_TYPE } from "@/theme/default-theme";
 
-import { StyledInput, StyledRoot, StyledThumb } from "./Switch.styles";
+import {
+  StyledInput,
+  StyledRoot,
+  StyledThumb,
+  StyledTrack,
+} from "./Switch.styles";
 export type SwitchVariantType = "contained" | "outlined" | "text";
 export type SwitchSizeType = "sm" | "md" | "lg";
 
@@ -19,14 +24,6 @@ export interface SwitchProps {
    * Determine the disabled status of switch.
    */
   disabled?: boolean;
-  /**
-   * Displaying content when the switch is checked.
-   */
-  checkedChildren?: React.ReactNode;
-  /**
-   * Displaying content when the switch is unChecked.
-   */
-  unCheckedChildren?: React.ReactNode;
 }
 
 /**
@@ -34,14 +31,12 @@ export interface SwitchProps {
  */
 const Switch: FC<SwitchProps> = ({
   disabled,
-  // checkedChildren,
-  // unCheckedChildren,
   size = "md",
   color = "primary",
   ...props
 }) => {
   return (
-    <StyledRoot role="switch">
+    <StyledRoot $size={size} role="switch">
       <StyledInput
         type="checkbox"
         disabled={disabled}
@@ -49,6 +44,7 @@ const Switch: FC<SwitchProps> = ({
         $color={color}
         {...props}
       />
+      <StyledTrack $size={size} $color={color} />
       <StyledThumb $size={size} />
     </StyledRoot>
   );
