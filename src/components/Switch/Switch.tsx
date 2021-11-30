@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { forwardRef } from "react";
 
 import { SCREW_COLOR_TYPE } from "@/theme/default-theme";
 
@@ -8,10 +8,12 @@ import {
   StyledThumb,
   StyledTrack,
 } from "./Switch.styles";
-export type SwitchVariantType = "contained" | "outlined" | "text";
+import { getSwitchUtilityClass } from "./switchClasses";
+
 export type SwitchSizeType = "sm" | "md" | "lg";
 
-export interface SwitchProps {
+export interface SwitchProps
+  extends Omit<React.ComponentPropsWithRef<"input">, "size"> {
   /**
    * The size of switch.
    */
@@ -25,28 +27,70 @@ export interface SwitchProps {
    */
   disabled?: boolean;
 }
+const useUtilityClasses = (ownerState: SwitchProps): Record<string, string> => {
+  const { checked, disabled } = ownerState;
+
+  const slots: Record<string, Array<string | false>> = {
+    root: ["root"],
+    thumb: ["thumb"],
+    track: ["track"],
+    input: ["input", !!checked && "checked", !!disabled && "disabled"],
+  };
+  const composedClasses: Record<string, string> = {};
+  Object.keys(slots).forEach((slot) => {
+    composedClasses[slot] = slots[slot]
+      .reduce((acc: string[], key: string | false) => {
+        if (key) {
+          acc.push(getSwitchUtilityClass(key));
+        }
+        return acc;
+      }, [] as string[])
+      .join(" ");
+  });
+
+  return composedClasses;
+};
 
 /**
  * Switch allow users to take actions by single tap component.
  */
-const Switch: FC<SwitchProps> = ({
-  disabled,
-  size = "md",
-  color = "primary",
-  ...props
-}) => {
+const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
+  props,
+  ref
+) {
+  const {
+    disabled,
+    size = "md",
+    color = "primary",
+    className,
+    ...rest
+  } = props;
+
+  const ownerState = {
+    ...props,
+    disabled,
+  };
+  const classes = useUtilityClasses(ownerState);
   return (
-    <StyledRoot $size={size} role="switch">
+    <StyledRoot
+      role="switch"
+      className={`${classes.root} ${className}`}
+      $size={size}
+      {...rest}
+    >
       <StyledInput
+        ref={ref}
         type="checkbox"
+        className={classes.input}
         disabled={disabled}
         $size={size}
         $color={color}
-        {...props}
+        {...rest}
       />
-      <StyledTrack $size={size} $color={color} />
-      <StyledThumb $size={size} />
+      <StyledTrack className={classes.track} $color={color} />
+      <StyledThumb className={classes.thumb} $size={size} />
     </StyledRoot>
   );
-};
+});
+
 export default Switch;
