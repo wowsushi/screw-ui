@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { isAccessor } from "typescript";
 
 import { SCREW_COLOR_MAPPING } from "@/theme/default-theme";
 import { ToPrivateProperty } from "@/theme/types";
