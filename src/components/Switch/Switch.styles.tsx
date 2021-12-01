@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { isAccessor } from "typescript";
 
 import { SCREW_COLOR_MAPPING } from "@/theme/default-theme";
 import { ToPrivateProperty } from "@/theme/types";
@@ -21,7 +22,6 @@ export const StyledInput = styled.input<
     position: "absolute",
     width: "inherit",
     height: "inherit",
-    borderRadius: theme.radius.xl,
     appearance: "none",
     cursor: "inherit",
 
@@ -57,7 +57,7 @@ export const StyledThumb = styled.span<
     borderRadius: "50%",
     backgroundColor: theme.white,
     transform: `translate(2px, ${switchHeight[$size] * RATIO_OFFSET}px)`,
-    transition: "left .15s cubic-bezier(0.4, 0, 0.2, 1)",
+    transition: ".25s",
     pointerEvents: "none",
   })}
 `;
@@ -69,20 +69,20 @@ export const StyledTrack = styled.span<
     width: "inherit",
     height: "inherit",
     backgroundColor: theme.colors.dark[3],
+    borderRadius: theme.radius.xl,
     pointerEvents: "none",
+    transition: "0.25s",
   })}
 `;
 
 export const StyledRoot = styled.span<
   Required<ToPrivateProperty<Pick<SwitchProps, "size">>>
 >`
-  ${({ theme, $size }) => ({
+  ${({ $size }) => ({
     display: "inline-flex",
     position: "relative",
     width: switchHeight[$size] * RATIO_TRACK_SIZE,
     height: switchHeight[$size],
-    borderRadius: theme.radius.xl,
-    overflow: "hidden",
     cursor: "pointer",
   })}
 `;
