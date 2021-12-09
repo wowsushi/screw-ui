@@ -13,6 +13,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       "@/theme": path.resolve(__dirname, "../src/theme"),
+      "@/hooks": path.resolve(__dirname, "../src/hooks"),
     };
     config.resolve.extensions.push(".ts", ".tsx");
     return config;
