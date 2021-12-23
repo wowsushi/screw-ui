@@ -3,8 +3,8 @@ import { FC } from "react";
 
 import { SCREW_COLOR_TYPE } from "@/theme/default-theme";
 
-import RadioGroup from "../RadioGroup";
-import Radio, { RadioSizeType } from "./Radio";
+import { RadioGroup } from "../RadioGroup";
+import { Radio, RadioSizeType } from "./Radio";
 
 export default {
   title: "Inputs/Radio",

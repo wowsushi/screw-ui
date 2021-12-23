@@ -23,7 +23,7 @@ export interface PortalProps {
 /**
  * Primary UI component for user interaction
  */
-const Portal: FC<PortalProps> = ({ children, container }) => {
+export const Portal: FC<PortalProps> = ({ children, container }) => {
   const [mountNode, setMountNode] = useState(container || document.body);
 
   useEffect(() => {
@@ -32,5 +32,3 @@ const Portal: FC<PortalProps> = ({ children, container }) => {
 
   return mountNode ? createPortal(children, mountNode) : mountNode;
 };
-
-export default Portal;

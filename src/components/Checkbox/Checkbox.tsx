@@ -72,63 +72,60 @@ const useUtilityClasses = (
 /**
  * Checkbox allow user to select multiple options from set.
  */
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
-  props,
-  ref
-) {
-  const {
-    disabled,
-    size = "md",
-    color = "primary",
-    className,
-    children,
-    checked: checkedProp,
-    defaultChecked,
-    indeterminate,
-    ...rest
-  } = props;
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+  function Checkbox(props, ref) {
+    const {
+      disabled,
+      size = "md",
+      color = "primary",
+      className,
+      children,
+      checked: checkedProp,
+      defaultChecked,
+      indeterminate,
+      ...rest
+    } = props;
 
-  const ownerState = {
-    ...props,
-    disabled,
-  };
+    const ownerState = {
+      ...props,
+      disabled,
+    };
 
-  const [checked, setCheckedState] = useControlled({
-    controlled: checkedProp,
-    default: defaultChecked,
-  });
+    const [checked, setCheckedState] = useControlled({
+      controlled: checkedProp,
+      default: defaultChecked,
+    });
 
-  const classes = useUtilityClasses(ownerState);
+    const classes = useUtilityClasses(ownerState);
 
-  const handleInputChange = (): void => {
-    setCheckedState(!checked);
-  };
-  let icon = checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />;
-  icon = indeterminate ? <MdIndeterminateCheckBox /> : icon;
-  return (
-    <StyledRoot
-      role="checkbox"
-      className={`${classes.root} ${className ? className : ""}`}
-      $size={size}
-    >
-      <StyledController $color={color} $disabled={!!disabled}>
-        {icon}
-      </StyledController>
-      <StyledInput
-        ref={ref}
-        type="checkbox"
-        className={classes.input}
-        disabled={disabled}
-        checked={!!checked}
-        defaultChecked={defaultChecked}
+    const handleInputChange = (): void => {
+      setCheckedState(!checked);
+    };
+    let icon = checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />;
+    icon = indeterminate ? <MdIndeterminateCheckBox /> : icon;
+    return (
+      <StyledRoot
+        role="checkbox"
+        className={`${classes.root} ${className ? className : ""}`}
         $size={size}
-        $color={color}
-        onChange={handleInputChange}
-        {...rest}
-      />
-      {children}
-    </StyledRoot>
-  );
-});
-
-export default Checkbox;
+      >
+        <StyledController $color={color} $disabled={!!disabled}>
+          {icon}
+        </StyledController>
+        <StyledInput
+          ref={ref}
+          type="checkbox"
+          className={classes.input}
+          disabled={disabled}
+          checked={!!checked}
+          defaultChecked={defaultChecked}
+          $size={size}
+          $color={color}
+          onChange={handleInputChange}
+          {...rest}
+        />
+        {children}
+      </StyledRoot>
+    );
+  }
+);

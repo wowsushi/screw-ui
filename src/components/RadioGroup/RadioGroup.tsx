@@ -21,7 +21,7 @@ export interface RadioGroupProps
 /**
  * RadioGroup allow user to select one status from multiple options.
  */
-const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
+export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
   function RadioGroup(props, ref) {
     const { className, name, children, defaultValue, onChange, ...rest } =
       props;
@@ -52,5 +52,3 @@ const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     );
   }
 );
-
-export default RadioGroup;

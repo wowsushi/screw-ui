@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { FC } from "react";
 import styled from "styled-components";
 
-import Switch from "./Switch";
+import { Switch } from "./Switch";
 
 export default {
   title: "Inputs/Switch",

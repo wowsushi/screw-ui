@@ -54,7 +54,7 @@ const useUtilityClasses = (ownerState: SwitchProps): Record<string, string> => {
 /**
  * Switch allow users to take actions by single tap component.
  */
-const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
   props,
   ref
 ) {
@@ -92,5 +92,3 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
     </StyledRoot>
   );
 });
-
-export default Switch;

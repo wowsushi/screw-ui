@@ -35,7 +35,7 @@ export interface TypographyProps {
 /**
  * Applied to display title or paragraph contents with no margin.
  */
-const Typography: FC<TypographyProps> = ({
+export const Typography: FC<TypographyProps> = ({
   children,
   variant = "body2",
   lineClamp,
@@ -52,5 +52,3 @@ const Typography: FC<TypographyProps> = ({
     </StyledRootElement>
   );
 };
-
-export default Typography;

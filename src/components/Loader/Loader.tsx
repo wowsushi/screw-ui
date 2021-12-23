@@ -15,7 +15,7 @@ export interface LoaderProps {
 /**
  * Applied to display loading status.
  */
-const Loader: FC<LoaderProps> = ({
+export const Loader: FC<LoaderProps> = ({
   color = "primary",
   size = "md",
   ...props
@@ -31,4 +31,3 @@ const Loader: FC<LoaderProps> = ({
     </StyledComponent>
   );
 };
-export default Loader;

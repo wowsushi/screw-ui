@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { SCREW_COLOR_TYPE } from "@/theme/default-theme";
 
-import Checkbox, { CheckboxSizeType } from "./Checkbox";
+import { Checkbox, CheckboxSizeType } from "./Checkbox";
 
 export default {
   title: "Inputs/Checkbox",

@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 import { SCREW_COLOR_TYPE } from "@/theme/default-theme";
 
-import Button, { ButtonSizeType } from "./Button";
+import { Button, ButtonSizeType } from "./Button";
 
 export default {
   title: "Inputs/Button",

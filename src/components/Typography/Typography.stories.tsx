@@ -2,7 +2,8 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { FC } from "react";
 import styled from "styled-components";
 
-import Typography, {
+import {
+  Typography,
   TypographyProps,
   TypographyVariantType,
 } from "./Typography";

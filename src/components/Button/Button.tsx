@@ -2,8 +2,8 @@ import React, { FC } from "react";
 
 import { SCREW_COLOR_TYPE } from "@/theme/default-theme";
 
-import Loader from "../Loader";
-import Typography from "../Typography";
+import { Loader } from "../Loader";
+import { Typography } from "../Typography";
 import StyledComponent, { StyledPrefix, StyledSuffix } from "./Button.styles";
 export type ButtonVariantType = "contained" | "outlined" | "text";
 export type ButtonSizeType = "sm" | "md" | "lg";
@@ -94,4 +94,4 @@ const Button: FC<ButtonProps> = ({
     </StyledComponent>
   );
 };
-export default Button;
+export { Button };

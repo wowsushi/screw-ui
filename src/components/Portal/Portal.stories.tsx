@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import Portal from "./Portal";
+import { Portal } from "./Portal";
 
 export default {
   title: "Utils/Portal",

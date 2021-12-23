@@ -56,7 +56,7 @@ const useUtilityClasses = (ownerState: RadioProps): Record<string, string> => {
 /**
  * Radio allow user to select one status from multiple options.
  */
-const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   props,
   ref
 ) {
@@ -101,5 +101,3 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     </StyledRoot>
   );
 });
-
-export default Radio;
